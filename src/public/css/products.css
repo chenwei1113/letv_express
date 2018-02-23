@@ -1,0 +1,63 @@
+.main .nav {
+  height: 60px;
+  width: 100%;
+  background: rgba(250, 250, 250, 0.9);
+  position: relative; }
+  .main .nav .uls {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap; }
+    .main .nav .uls li {
+      display: inline-block;
+      font-size: 18px;
+      padding: 0 28px;
+      line-height: 60px; }
+      .main .nav .uls li a {
+        color: #999; }
+    .main .nav .uls .current {
+      font-weight: 700;
+      color: #2c83c6; }
+
+.main .prds-box {
+  width: 100%;
+  background-color: #f5f5f5; }
+  .main .prds-box .prds-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0 14px;
+    overflow: hidden; }
+    .main .prds-box .prds-wrap .col {
+      width: 50%;
+      float: left;
+      margin-bottom: 14px; }
+      .main .prds-box .prds-wrap .col .item {
+        padding: 30px 32px 38px;
+        margin: 0 8px;
+        background: #fff;
+        box-sizing: border-box; }
+        .main .prds-box .prds-wrap .col .item img {
+          width: 100%;
+          height: 100%; }
+        .main .prds-box .prds-wrap .col .item p {
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #333;
+          font-size: 24px;
+          margin-top: 14px;
+          line-height: 50px; }
+          .main .prds-box .prds-wrap .col .item p:hover {
+            cursor: pointer;
+            text-decoration: underline; }
+        .main .prds-box .prds-wrap .col .item a {
+          color: #2c83c6;
+          font-size: 14px; }
+          .main .prds-box .prds-wrap .col .item a:hover {
+            color: #055999;
+            text-decoration: underline; }
+
+@media only screen and (max-width: 767px) {
+  .main .prds-box .prds-wrap .col {
+    width: 100%;
+    float: none; } }

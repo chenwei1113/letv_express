@@ -9,7 +9,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     .logo {
-      widht: 122px;
+      width: 122px;
       height: 47px;
     }
     .info {
@@ -61,7 +61,7 @@ header {
       width: 100%;
       overflow: hidden;
       line-height: 30px;
-      padding-bottom: 14px;
+      // padding-bottom: 14px;
       h3{
         font-weight: normal;
         color: #333;
@@ -74,6 +74,20 @@ header {
           color: #529bef;
           font-size: 14px;
         }
+      }
+    }
+    .errmsg{
+      display: none;
+      color: red;
+      i {
+        width: 15px;
+        height: 16px;
+        background-position: 0 -100px;
+        vertical-align: middle;
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
       }
     }
     .form{
@@ -105,6 +119,12 @@ header {
         }
         i {
           background-position: 4px 5px;
+        }
+        #usermsg {
+          float: right;
+          line-height: 40px;
+          position: absolute;
+          right: 0;
         }
       }
       .userpass {

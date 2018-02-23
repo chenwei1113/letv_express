@@ -29,13 +29,35 @@ $(".close").click(function(){
     })
 });
 
-
-
-
 //-------------页面尾部的点击事件-----------
 $(".footer-list").each(function(i){
     $(this).click(function(){
         $(this).find($(".ulbox")).toggle("slow");
     });
 });
+
+// --------------返回顶部事件----------------
+$(".goTop").mouseenter(function(){
+    $(this).css({
+        "background": "#2c83c6",
+        "color": "#fff"
+    });
+    $(this).animate({"width":"110px"},200);
+    $(this).find("span").css("display","block");
+});
+$(".goTop").mouseleave(function () {
+    $(this).css({
+        "background": "#fff",
+        "color": "#999"
+    });
+    $(this).animate({ "width": "40px" },200);
+    $(this).find("span").css("display", "none");
+});
+$(".goTop").click(function(){
+    // $(window).scrollTop(0);
+    $("body,html").animate({
+        "scrollTop": 0
+    }, 500);
+});
+
 

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/goodsdetail.css"/>
+    <title>产品资讯</title>
+</head>
+<body>
+<!-----------------------头部---------------------->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="../img/logo.png" alt=""/></a>
+        <div class="ul-list">
+            <li><a href="">超级电视</a></li>
+            <li><a href="goodslist">产品资讯</a></li>
+            <li><a href="">生态服务</a></li>
+            <li><a href="">关于我们</a></li>
+            <li class="other">
+                <a href="html/register.html">注册</a>
+                <span>|</span>
+                <a href="html/login.html">登录</a>
+            </li>
+        </div>
+        <div class="list"><img src="../img/list.png" alt=""/></div>
+        <div class="close"><img src="../img/close.png" alt=""/></div>
+        <div class="list-items">
+            <ul>
+                <li><a href="html/index.html">首页</a></li>
+                <li><a href="">超级电视</a></li>
+                <li><a href="html/products.html">产品资讯</a></li>
+                <li><a href="">生态服务</a></li>
+                <li><a href="">关于我们</a></li>
+                <li><a href="">乐视商城</a></li>
+                <li><a href="">乐视视频</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-----------------------头部结束------------------>
+
+<!--中间主体部分 start-->
+<div class="main">
+    <div class="container">
+        <div class="prd-info">
+            <div class="imgbox"><img src="<%=goodsdetail.goodspic%>" alt=""></div>
+            <div class="prd-title">
+                <p class="title"><%=goodsdetail.goodsname%></p>
+                <p class="price">￥<%=goodsdetail.goodsprice%>.00</p>
+            </div>
+        </div>
+        <hr>
+        <div class="commentsbox">
+            <div class="prd-name">
+                <%=goodsdetail.goodsname%> 用户点评
+            </div>
+            <ul class="comments">
+                <%
+                    comments.forEach((comment)=>{    
+                %>
+                <li>
+                    <div class="userphone"><%=comment.userphone%></div>
+                    <div class="contents">
+                        <p><%=comment.comment%></p>
+                        <%
+                        if(comment.commentimg){
+                        %>
+                        <div class="img">
+                            <img src="<%=comment.commentimg%>" style="width:50px;height:50px;" alt="">
+                        </div>
+                        <%
+                        }
+                        %> 
+                        <span class="time"><%=comment.commentdate.toLocaleString()%></span>
+                    </div>
+                </li>
+                <%
+                });
+                %>
+            </ul>
+            <%
+            <!-- 已知：总页码数，当前页码，每页多少条记录 -->
+            let maxPageIndex = parseInt(page.maxPageIndex);
+            console.log("maxPageIndex="+maxPageIndex);
+            let currPageIndex = parseInt(page.currPageIndex);
+            currPageIndex = currPageIndex>maxPageIndex?maxPageIndex:currPageIndex;
+            <!-- //let countInPage = 10; -->
+        
+            <!-- //上一页 -->
+            previousePageIndex = currPageIndex==1?currPageIndex:currPageIndex-1;
+            <!-- //下一页 -->
+            nextPageIndex = currPageIndex==maxPageIndex?currPageIndex:currPageIndex+1;
+            %>
+
+            <%
+            if(comments.length>0){
+            %>
+            <div id="pageBox">
+                <%if(currPageIndex==1){
+                    %>
+                    第一页
+                    上一页
+                <%
+                }else{%>
+                    <a href="goodsdetail?goodsid=<%=goodsdetail.goodsid%>&pageindex=1">第一页</a>
+                    <a href="goodsdetail?goodsid=<%=goodsdetail.goodsid%>&pageindex=<%=previousePageIndex%>">上一页</a>
+                <%
+                }%>
+                <%
+                <!-- //加上前后的省略号：
+                //明确：最多显示多少个页码号（如：7），当前页码前面多少（3），当前页码后面多少（3），其余都是省略号
+                //如：当前页码是6，那么显示结果是：   ……3 4 5 6 7 8 9…… -->
+    
+                <!-- //特殊情况：1）、总页码不够7个，2）前面不够三个，3）、后面不够三个 -->
+                var startPageIndex = currPageIndex-2;
+                var endPageIndex = currPageIndex+2;
+                <!-- //1）前面不够三个， -->
+                if(currPageIndex-2<=0){
+                    startPageIndex = 1;
+                    endPageIndex = startPageIndex+4;
+                }
+                <!-- //2）、后面不够三个 -->
+                if(currPageIndex+2>=maxPageIndex){
+                    endPageIndex = maxPageIndex;
+                    startPageIndex = endPageIndex-4;
+                }
+                <!-- //3）、总页码不够5个， -->
+                if(maxPageIndex<5){
+                    startPageIndex = 1;
+                    endPageIndex = maxPageIndex;
+                }
+                %>
+                <%
+                <!-- //开始的省略号 -->
+                if(startPageIndex>1){
+                %>
+                ...
+                <%
+                }
+                %>
+                <%
+                <!-- //要显示的页码 -->
+                for(let i=startPageIndex;i<=endPageIndex;i++){
+                    if(i==currPageIndex){
+                %>
+                    <%=i%>
+                <%
+                    continue;
+                    }
+                %>
+                    <a href="goodsdetail?goodsid=<%=goodsdetail.goodsid%>&pageindex=<%=i%>">&nbsp;<%=i%>&nbsp;</a>
+                <%
+                }
+                %>
+                <%
+                <!-- //结束的省略号 -->   
+                if(endPageIndex<maxPageIndex){
+                %>
+                    ...
+                <%
+                }
+                %>
+                <%if(currPageIndex==maxPageIndex){
+                %>
+                下一页
+                末页
+                <%
+                }else{
+                %>
+                <a href="goodsdetail?goodsid=<%=goodsdetail.goodsid%>&pageindex=<%=nextPageIndex%>">下一页</a>
+                <a href="goodsdetail?goodsid=<%=goodsdetail.goodsid%>&pageindex=<%=maxPageIndex%>">末页</a>
+                <%
+                }
+                %>
+                到<input id="txtpageIndex" type="text" value="<%=currPageIndex%>" style='width:20px;text-align:center;'>页<input id="btnGo" type="button" value="go">
+            </div>
+            <%
+            }else{
+            %>
+            暂无评论
+            <%
+            }
+            %>
+        </div>
+        
+        <!--发表评论区-->
+        <div style="display: <%=showcomment%>" class="commentbox">
+            <!-- 上传图片区域 -->
+            <iframe src="html/upfile.html" style="width: 600px;height: 60px;margin-left:50px;border: none" >   
+            </iframe>
+            <form method="post" action="savecomment">
+                <input type="hidden" name="goodsid" value="<%=goodsdetail.goodsid%>">
+                评价晒单 <textarea name="comment" rows="6" cols="80"></textarea><br/>
+                <input type="submit" value="提交评论">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--中间主体部分 end-->
+
+
+<!----------------------fooer部分 start------------>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <div class="footer-list">
+                    <h3>选购及了解</h3>
+                    <div class="ulbox">
+                        <ul class="firstUl">
+                            <li><a href="">超级电视</a></li>
+                            <li><a href="">屏霸</a></li>
+                            <li><a href="">乐视盒子</a></li>
+                            <li><a href="">超级影视会员</a></li>
+                            <li><a href="">超级体育会员</a></li>
+                        </ul>
+                        <ul class="secondUl">
+                            <li><a href="">游戏配件</a></li>
+                            <li><a href="">家庭音响</a></li>
+                            <li><a href="">大屏新购物</a></li>
+                            <li><a href="">金钻充值</a></li>
+                            <li><a href="">超级电视</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="footer-list">
+                    <h3>购买指南</h3>
+                    <div class="ulbox">
+                        <ul class="firstUl">
+                            <li><a href="">查找LePar生态体验店</a></li>
+                            <li><a href="">乐视商城App</a></li>
+                            <li><a href="">订单状态</a></li>
+                            <li><a href="">客户服务/选购帮助</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="footer-list">
+                    <h3>关于乐视超级电视</h3>
+                    <div class="ulbox">
+                        <ul class="firstUl">
+                            <li><a href="">新闻</a></li>
+                            <li><a href="">价值观</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="footer-list">
+                    <h3>联系我们</h3>
+                    <div class="ulbox codes">
+                        <p class="imgs">
+                            <span>
+                                <strong>
+                                    <img src="../img/tvcode.jpg" alt=""/>
+                                </strong>
+                                <em>乐视电视</em>
+                            </span>
+                            <span>
+                                <strong>
+                                    <img src="../img/videocode.jpg" alt=""/>
+                                </strong>
+                                <em>乐视视频</em>
+                            </span>
+                        </p>
+                        <p class="text">
+                            <strong>1010-9000</strong><br/>
+                            <em>7×24小时客服电话</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2017 Letv.com Inc. All Rights Reserved. <span>网站备案/许可证号：京ICP备09045969号-1</span></p>
+        </div>
+    </div>
+</footer>
+<!----------------------fooer部分 end------------>
+<!-- 返回顶部 start -->
+<div class="goTop">
+    <span>返回顶部</span>
+    <i>︿</i>
+</div>
+<!-- 返回顶部 end -->
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<!-- <script type="text/javascript" src="../js/goodsdetail.js"></script> -->
+<script type="text/javascript">
+window.onload =  function () {
+    document.getElementById("btnGo").onclick = function () {
+        let pageindex = parseInt(document.getElementById("txtpageIndex").value);
+        if(pageindex<1){
+            pageindex=1;
+        }else if(pageindex><%=maxPageIndex%>){
+            pageindex = <%=maxPageIndex%>;
+        }
+        location.href="goodsdetail?goodsid=<%=goodsdetail.goodsid%>&pageindex="+pageindex;
+    }
+}
+</script>

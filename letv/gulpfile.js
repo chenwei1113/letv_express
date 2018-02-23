@@ -1,10 +1,10 @@
 /**
  * Created by Administrator on 2018/2/6.
  */
-//引包
+//寮曞寘
 var gulp = require("gulp");
 var sass = require("gulp-sass");
-//建任务
+//鏂板缓浠诲姟
 gulp.task("copy-html",function(){
     gulp.src("html/**/*")
         .pipe(gulp.dest("..\\src\\public\\html"));
@@ -23,7 +23,7 @@ gulp.task("copy-js",function(){
         .pipe(gulp.dest("..\\src\\public\\js"));
 });
 
-//监听
+//鐩戝惉
 gulp.task("watchall",function(){
     gulp.watch("html/**/*",["copy-html"]);
     gulp.watch("img/**/*",["copy-img"]);

@@ -26,15 +26,19 @@
                 <h3>登录</h3>
                 <span><em></em><a href="#">短信验证码登录</a></span>
             </div>
-            <form action="" class="form">
+            <p class="errmsg">
+                <i></i>
+                <span></span>
+            </p>
+            <form action="../login" method="post" class="form">
                 <div class="username">
                     <i></i>
-                    <input  type="text" placeholder="邮箱/手机号"/>
+                    <input  type="text" placeholder="邮箱/手机号" name="userphone" id="userphone"/>
                     <i></i>
                 </div>
                 <div class="userpass">
                     <i></i>
-                    <input  type="text" placeholder="密码"/>
+                    <input  type="text" placeholder="密码" name="userpass" id="userpass"/>
                 </div>
                 <div class="reme">
                     <input type="checkbox" checked/> 记住登录状态

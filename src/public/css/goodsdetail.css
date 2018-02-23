@@ -1,0 +1,97 @@
+.main {
+  width: 100%;
+  background: #f5f5f5; }
+  .main .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 40px; }
+    .main .container .prd-info {
+      overflow: hidden;
+      margin-bottom: 20px;
+      background: #fff; }
+      .main .container .prd-info .imgbox {
+        padding: 5px;
+        float: left;
+        width: 40%; }
+        .main .container .prd-info .imgbox img {
+          width: 100%;
+          height: 100%; }
+      .main .container .prd-info .prd-title {
+        float: left;
+        margin-left: 50px;
+        font-size: 20px; }
+        .main .container .prd-info .prd-title .title {
+          margin: 20px auto 20px; }
+    .main .container .commentsbox {
+      font-size: 16px; }
+      .main .container .commentsbox .prd-name {
+        text-align: center;
+        font-size: 20px;
+        padding: 10px 0; }
+      .main .container .commentsbox .comments {
+        width: 100%; }
+        .main .container .commentsbox .comments li {
+          width: 100%;
+          background: #fff;
+          overflow: hidden;
+          padding: 10px;
+          box-sizing: border-box;
+          margin-bottom: 10px; }
+          .main .container .commentsbox .comments li .userphone {
+            float: left;
+            width: 15%;
+            height: 25px;
+            line-height: 25px; }
+          .main .container .commentsbox .comments li .contents {
+            float: left;
+            width: 85%; }
+            .main .container .commentsbox .comments li .contents p {
+              margin-bottom: 10px; }
+            .main .container .commentsbox .comments li .contents .time {
+              display: block;
+              color: #333;
+              font-size: 14px;
+              margin: 10px 0; }
+    .main .container .commentbox textarea {
+      vertical-align: middle;
+      outline: none;
+      resize: none;
+      padding: 10px; }
+    .main .container .commentbox input[type='submit'] {
+      width: 100px;
+      height: 30px;
+      background: red;
+      color: #fff;
+      outline: none;
+      border: none;
+      text-align: center;
+      line-height: 30px;
+      margin-left: 250px;
+      border-radius: 5px;
+      margin-top: 5px; }
+  .main #pageBox {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px; }
+    .main #pageBox a {
+      width: 50px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      display: inline-block;
+      border: 1px solid #ccc;
+      background: #fff;
+      border-radius: 3px; }
+
+@media only screen and (max-width: 767px) {
+  .main .container .prd-info .imgbox {
+    margin-left: 18px; }
+  .main .container .commentsbox .comments {
+    width: 100%; }
+    .main .container .commentsbox .comments li .userphone {
+      float: none;
+      width: 100%; }
+    .main .container .commentsbox .comments li .contents {
+      float: none;
+      width: 100%;
+      margin-top: 10px; } }

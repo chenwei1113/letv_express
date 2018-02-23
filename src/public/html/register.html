@@ -26,15 +26,16 @@
             <h3>注册</h3>
             <span><a href="login.html">立即登录</a></span>
         </div>
-        <p class="errmsg"></p>
-        <form action="" class="form">
+        <p class="errmsg"><i></i><span></span></p>
+        <form action="../reg" method="post" class="form">
             <div class="username">
                 <i></i>
-                <input  type="text" placeholder="手机号" id="userphone"/>
+                <input  type="text" placeholder="手机号" id="userphone" name="userphone"/>
+                <span id="usermsg"></span>
             </div>
             <div class="userpass">
                 <i></i>
-                <input  type="text" placeholder="密码"/>
+                <input  type="text" placeholder="密码" id="userpass" name="userpass"/>
             </div>
             <div class="checkcode">
                 <i></i>

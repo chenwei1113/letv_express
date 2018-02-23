@@ -13,7 +13,6 @@ table{border-collapse:collapse;border-spacing:0};
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden};
 .clearfix,.wbox{*zoom:1}
 
-
 //-----------------头部样式---------------
 .header {
   height: 80px;
@@ -199,7 +198,36 @@ footer{
   }
 }
 //--------------------footer部分 end  -------------
+// ----------------返回顶部 start------------------
 
+// ----------------返回顶部 end------------------
+.goTop {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 50px;
+  right: 0;
+  background: #fff;
+  line-height: 40px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+  span{
+    float: left;
+    display: none;
+    padding: 0 0 0 10px;
+    font-size: 14px;
+  }
+  i {
+    //float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-style: normal;
+    // margin-right: 10px;
+  }
+}
 //---------------(0-767)----------------------
 @media only screen and (max-width: 767px){
   //---------------头部样式变化----------------

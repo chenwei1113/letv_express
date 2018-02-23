@@ -3,10 +3,21 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
+//二、引入自己写的模块
 var index = require('./routes/index');
 var users = require('./routes/users');
+var reg = require("./routes/reg");
+var login = require('./routes/login');
+var usercheck = require('./routes/usercheck');
+var savegoods = require('./routes/savegoods');
+var goodslist = require('./routes/goodslist');
+var goodsdetail = require('./routes/goodsdetail');
+var savecomment = require('./routes/savecomment');
+var uploader = require('./routes/uploader');
+
 
 var app = express();
 
@@ -21,9 +32,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'recommend 128 bytes random string',
+  cookie: { maxAge: 20 * 60 * 1000 },
+  resave: true,
+  saveUninitialized: true
+}));
 
+//一、路由，找对应的中间件
 app.use('/', index);
 app.use('/users', users);
+app.use('/reg', reg);
+app.use('/usercheck', usercheck);
+app.use('/login',login);
+app.use('/savegoods',savegoods);
+app.use('/goodslist',goodslist);
+app.use('/goodsdetail', goodsdetail);
+app.use('/savecomment', savecomment);
+app.use('/uploader', uploader);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
